@@ -9,16 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        CoordinatorView(AppCoordinator()) { destination in
+            if let appDestination = destination as? AppDestination {
+                AnyView(appDestination.makeView())
+            } else {
+                AnyView(EmptyView())
+            }
         }
-        .padding()
     }
-}
-
-#Preview {
-    ContentView()
 }
