@@ -14,6 +14,5 @@ protocol Coordinating: ObservableObject {
     
     var router: Router { get set }
     
-    func start()
     @ViewBuilder func makeRootView() -> RootView
 }

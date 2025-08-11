@@ -9,25 +9,28 @@ import SwiftUI
 import Combine
 
 struct CoordinatorView<Router: Routing, CoordinatorType: Coordinator<Router>>: View {
-    @StateObject private var coordinator: CoordinatorType
-    private let destinationViewBuilder: (AnyHashable) -> AnyView
+//    @StateObject private var coordinator: CoordinatorType
+    @StateObject private var coordinator = AppCoordinator()
     
-    init(
-        _ coordinatorBuilder: @autoclosure @escaping () -> CoordinatorType,
-        destinationViewBuilder: @escaping (AnyHashable) -> AnyView
-    ) {
-        self._coordinator = StateObject(wrappedValue: coordinatorBuilder())
-        self.destinationViewBuilder = destinationViewBuilder
+    init(_ coordinatorBuilder: CoordinatorType) {
+//        self._coordinator = StateObject(wrappedValue: coordinatorBuilder)
     }
     
     var body: some View {
         NavigationStack(path: $coordinator.router.navigationPath) {
             coordinator.makeRootView()
-                .navigationDestination(for: AnyHashable.self) { destination in
-                    destinationViewBuilder(destination)
-                        .environmentObject(coordinator)
+                .environmentObject(coordinator)
+                .navigationDestination(for: AppDestination.self) { destination in
+//                    if let destination = destination as? AppDestination {
+                        AnyView(destination.makeView())
+                            .environmentObject(coordinator)
+//                    } else {
+//                        AnyView(EmptyView())
+//                    }
+                    
                 }
         }
+        
         .sheet(item: $coordinator.router.presentedSheet) { destination in
             NavigationStack {
                 destination.makeView()
@@ -40,10 +43,5 @@ struct CoordinatorView<Router: Routing, CoordinatorType: Coordinator<Router>>: V
                     .environmentObject(coordinator)
             }
         }
-        .onAppear {
-            print("CoordinatorView appeared")
-            coordinator.start()
-        }
-        .environmentObject(coordinator)
     }
 }

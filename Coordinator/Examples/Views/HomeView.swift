@@ -29,6 +29,10 @@ struct HomeView: View {
                 print("Show Detail button tapped")
                 coordinator.showDetail(itemId: "item-1")
             }
+            
+            Button("Print navigation path") {
+                coordinator.router.navigationPath
+            }
         }
         .navigationTitle("Home")
     }

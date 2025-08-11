@@ -10,14 +10,14 @@ import Combine
 
 @MainActor
 class Coordinator<Router: Routing>: Coordinating {
-    @Published var router: Router
+    @Published var router: Router {
+        didSet {
+            print()
+        }
+    }
     
     init(router: Router) {
         self.router = router
-    }
-    
-    func start() {
-        // Override in subclasses to implement initial navigation
     }
     
     @ViewBuilder func makeRootView() -> AnyView {

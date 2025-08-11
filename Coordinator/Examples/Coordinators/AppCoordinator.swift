@@ -16,10 +16,6 @@ class AppCoordinator: Coordinator<AppRouter> {
         super.init(router: AppRouter())
     }
     
-    override func start() {
-        // Initial setup - no need to push anything since we have a root view
-    }
-    
     @ViewBuilder override func makeRootView() -> AnyView {
         AnyView(HomeView())
     }
