@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var coordinator: AppCoordinator
+//    @EnvironmentObject var coordinator: AppCoordinator
     
     var body: some View {
         VStack {
@@ -16,7 +16,7 @@ struct SettingsView: View {
                 .font(.title)
             
             Button("Close") {
-                coordinator.router.dismiss()
+//                coordinator.router.dismiss()
             }
         }
         .navigationTitle("Settings")

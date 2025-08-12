@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ProfileView: View {
     let userId: String
-    @EnvironmentObject var coordinator: AppCoordinator
+//    @EnvironmentObject var coordinator: AppCoordinator
     
     var body: some View {
         VStack {
@@ -17,7 +17,7 @@ struct ProfileView: View {
                 .font(.title)
             
             Button("Show Detail") {
-                coordinator.showDetail(itemId: "profile-item")
+//                coordinator.showDetail(itemId: "profile-item")
             }
         }
         .navigationTitle("Profile")

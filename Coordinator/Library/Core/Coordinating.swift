@@ -8,7 +8,7 @@
 import SwiftUI
 
 @MainActor
-protocol Coordinating: ObservableObject {
+protocol Coordinating {
     associatedtype Router: Routing
     associatedtype RootView: View
     

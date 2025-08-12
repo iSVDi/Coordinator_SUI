@@ -7,11 +7,7 @@
 
 import SwiftUI
 
-protocol Destination: Hashable, Identifiable {
+protocol Destination: Hashable {
     associatedtype ViewType: View
     @ViewBuilder func makeView() -> ViewType
-}
-
-extension Destination {
-    var id: Self { self }
 }

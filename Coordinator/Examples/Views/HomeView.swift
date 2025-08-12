@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var coordinator: AppCoordinator
+    @EnvironmentObject var coordinator: Coordinator<AppRouter>
     
     var body: some View {
         VStack(spacing: 20) {
@@ -31,7 +31,7 @@ struct HomeView: View {
             }
             
             Button("Print navigation path") {
-                coordinator.router.navigationPath
+//                coordinator.router.navigationPath
             }
         }
         .navigationTitle("Home")
