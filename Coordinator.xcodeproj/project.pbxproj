@@ -6,12 +6,21 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A55900E72E49C2BF005D94D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A55900E42E49C2BF005D94D2 /* Assets.xcassets */; };
+		A55900F02E49C2BF005D94D2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55900E52E49C2BF005D94D2 /* ContentView.swift */; };
+		A55900F22E49C2BF005D94D2 /* CoordinatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55900E62E49C2BF005D94D2 /* CoordinatorApp.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		A5547FEC2E45D768005F24C2 /* Coordinator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Coordinator.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A55900E42E49C2BF005D94D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A55900E52E49C2BF005D94D2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A55900E62E49C2BF005D94D2 /* CoordinatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		A5547FEE2E45D768005F24C2 /* Coordinator */ = {
+		A55900F92E49C7E3005D94D2 /* Coordinator */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -32,7 +41,10 @@
 		A5547FE32E45D768005F24C2 = {
 			isa = PBXGroup;
 			children = (
-				A5547FEE2E45D768005F24C2 /* Coordinator */,
+				A55900E52E49C2BF005D94D2 /* ContentView.swift */,
+				A55900E42E49C2BF005D94D2 /* Assets.xcassets */,
+				A55900E62E49C2BF005D94D2 /* CoordinatorApp.swift */,
+				A55900F92E49C7E3005D94D2 /* Coordinator */,
 				A5547FED2E45D768005F24C2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,7 +73,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				A5547FEE2E45D768005F24C2 /* Coordinator */,
+				A55900F92E49C7E3005D94D2 /* Coordinator */,
 			);
 			name = Coordinator;
 			packageProductDependencies = (
@@ -109,6 +121,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A55900E72E49C2BF005D94D2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +132,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A55900F02E49C2BF005D94D2 /* ContentView.swift in Sources */,
+				A55900F22E49C2BF005D94D2 /* CoordinatorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
