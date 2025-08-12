@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct DetailView: View {
+    @Environment(Coordinator<AppRouter>.self) var coordinator
+    
     let itemId: String
-//    @EnvironmentObject var coordinator: AppCoordinator
     
     var body: some View {
         VStack {
@@ -17,11 +18,11 @@ struct DetailView: View {
                 .font(.title)
             
             Button("Go Back") {
-//                coordinator.router.pop()
+                coordinator.router.pop()
             }
             
             Button("Go to Root") {
-//                coordinator.router.popToRoot()
+                coordinator.router.popToRoot()
             }
         }
         .navigationTitle("Detail")

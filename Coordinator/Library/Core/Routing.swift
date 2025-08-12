@@ -8,7 +8,7 @@
 import SwiftUI
 
 @MainActor
-protocol Routing: ObservableObject {
+protocol Routing {
     associatedtype RouteDestination: Destination
     
     var navigationPath: NavigationPath { get set }

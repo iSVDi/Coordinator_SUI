@@ -6,13 +6,13 @@
 //
 
 import SwiftUI
-import Combine
 
+@Observable
 @MainActor
-class BaseRouter<RouteDestination: Destination>: Routing, ObservableObject {
-    @Published var navigationPath = NavigationPath()
-    @Published var presentedSheet: RouteDestination?
-    @Published var presentedFullScreenCover: RouteDestination?
+class BaseRouter<RouteDestination: Destination>: Routing {
+    var navigationPath = NavigationPath()
+    var presentedSheet: RouteDestination?
+    var presentedFullScreenCover: RouteDestination?
     
     func push(_ destination: RouteDestination) {
         print("Pushing destination: \(destination)")

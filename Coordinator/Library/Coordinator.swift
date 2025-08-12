@@ -8,20 +8,19 @@
 import SwiftUI
 import Combine
 
+@Observable
 @MainActor
-class Coordinator<Router: AppRouter>: Coordinating, ObservableObject {
-    @Published var router: Router
+class Coordinator<Router: AppRouter>: Coordinating {
+    var router: Router
     
     init(router: Router) {
         self.router = router
     }
     
     @ViewBuilder func makeRootView() -> some View  {
-        //        AnyView(Text("Some Root View"))
         HomeView()
     }
     
-    //     Coordinator-specific navigation methods
     func showProfile(userId: String) {
         router.push(.profile(userId: userId))
     }
@@ -35,7 +34,3 @@ class Coordinator<Router: AppRouter>: Coordinating, ObservableObject {
     }
     
 }
-
-/*
- how sync nested observableObject 
- */

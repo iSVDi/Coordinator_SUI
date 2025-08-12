@@ -9,6 +9,7 @@ import SwiftUI
 import Combine
 
 enum AppDestination: Destination, Hashable {
+    
     case home
     case profile(userId: String)
     case settings
