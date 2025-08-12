@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailView: View {
-    @Environment(Coordinator<AppRouter>.self) var coordinator
+    @Environment(BaseCoordinator<MainDestination, BaseRouter<MainDestination>>.self) var coordinator
     
     let itemId: String
     

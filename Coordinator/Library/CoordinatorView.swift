@@ -8,7 +8,10 @@
 import SwiftUI
 import Combine
 
-struct CoordinatorView<Router: Routing, CoordinatorType: Coordinator<Router>>: View {
+struct CoordinatorView<
+    Destinating: Destination,
+    CoordinatorType: BaseCoordinator<Destinating, BaseRouter<Destinating>>
+>: View {
     @State private var coordinator: CoordinatorType
     
     init(_ coordinatorBuilder: CoordinatorType) {
@@ -19,26 +22,28 @@ struct CoordinatorView<Router: Routing, CoordinatorType: Coordinator<Router>>: V
         NavigationStack(path: $coordinator.router.navigationPath) {
             coordinator.makeRootView()
                 .environment(coordinator)
-                .navigationDestination(for: AppDestination.self) { destination in
-                    destination.makeView()
+                .navigationDestination(for: Destinating.self) { destination in
+                    coordinator.makeView(destination)
                         .environment(coordinator)
                     
                 }
         }
         
         .sheet(item: $coordinator.router.presentedSheet) { destination in
-            CoordinatorView(Coordinator(router: AppRouter()) as! CoordinatorType)
+            
+            CoordinatorView(SettingsCoordinator(router: BaseRouter<SettingsDestination>()))
+            CoordinatorView(MainCoordinator(router: BaseRouter<MainDestination>()))
 //            NavigationStack {
 //                destination.makeView()
 //                    .environment(coordinator)
 //            }
         }
-        .fullScreenCover(item: $coordinator.router.presentedFullScreenCover) { destination in
-            CoordinatorView(Coordinator(router: AppRouter()) as! CoordinatorType)
-//            NavigationStack {
-//                destination.makeView()
-//                    .environment(coordinator)
-//            }
-        }
+//        .fullScreenCover(item: $coordinator.router.presentedFullScreenCover) { destination in
+//            CoordinatorView(Coordinator(router: AppRouter()) as! CoordinatorType)
+////            NavigationStack {
+////                destination.makeView()
+////                    .environment(coordinator)
+////            }
+//        }
     }
 }

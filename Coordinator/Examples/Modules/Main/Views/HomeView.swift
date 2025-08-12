@@ -1,5 +1,5 @@
 //
-//  ProfileView.swift
+//  HomeView.swift
 //  Coordinator
 //
 //  Created by Daniil on 08.08.2025.
@@ -7,14 +7,13 @@
 
 import SwiftUI
 
-struct ProfileView: View {
-        @Environment(Coordinator<AppRouter>.self) var coordinator
-    let userId: String
+struct HomeView: View {
+    @Environment(MainCoordinator.self) var coordinator
     
     var body: some View {
-        VStack {
-            Text("Profile for user: \(userId)")
-                .font(.title)
+        VStack(spacing: 20) { 
+            Text("Home")
+                .font(.largeTitle)
             
             Button("Show Profile") {
                 print("Show Profile button tapped")
@@ -31,12 +30,7 @@ struct ProfileView: View {
                 coordinator.showDetail(itemId: "item-1")
             }
             
-            Button("Close") {
-                coordinator.router.dismiss()
-            }
-            
         }
-        .navigationTitle("Profile")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Home")
     }
 }

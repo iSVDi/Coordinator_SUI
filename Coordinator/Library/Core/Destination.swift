@@ -8,8 +8,8 @@
 import SwiftUI
 
 protocol Destination: Hashable, Identifiable {
-    associatedtype ViewType: View
-    @ViewBuilder func makeView() -> ViewType
+//    associatedtype ViewType: View
+//    @ViewBuilder func makeView() -> ViewType
 }
 
 extension Destination {

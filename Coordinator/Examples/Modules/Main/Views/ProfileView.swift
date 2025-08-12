@@ -1,5 +1,5 @@
 //
-//  SettingsView.swift
+//  ProfileView.swift
 //  Coordinator
 //
 //  Created by Daniil on 08.08.2025.
@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct SettingsView: View {
-    @Environment(Coordinator<AppRouter>.self) var coordinator
+struct ProfileView: View {
+    @Environment(MainCoordinator.self) var coordinator
+    let userId: String
     
     var body: some View {
         VStack {
-            Text("Settings")
+            Text("Profile for user: \(userId)")
                 .font(.title)
             
             Button("Show Profile") {
@@ -33,8 +34,9 @@ struct SettingsView: View {
             Button("Close") {
                 coordinator.router.dismiss()
             }
+            
         }
-        .navigationTitle("Settings")
+        .navigationTitle("Profile")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
