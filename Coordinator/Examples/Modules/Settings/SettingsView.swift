@@ -5,9 +5,7 @@
 //  Created by Daniil on 12.08.2025.
 //
 
-
 import SwiftUI
-import Combine
 
 struct SettingsView: View {
     @Environment(SettingsCoordinator.self) var coordinator
@@ -34,7 +32,7 @@ struct SettingsView: View {
         
         Button("Dismiss") {
             print("Show Detail button tapped")
-            coordinator.finish()
+            coordinator.dismiss()
         }
     }
 }

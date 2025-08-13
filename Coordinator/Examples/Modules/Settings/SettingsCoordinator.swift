@@ -5,18 +5,20 @@
 //  Created by Daniil on 12.08.2025.
 //
 
-
 import SwiftUI
-import Combine
 
-class SettingsCoordinator: BaseCoordinator<SettingsDestination, BaseRouter<SettingsDestination>> {
+class SettingsCoordinator: BaseCoordinator<SettingsDestination> {
     
     override func makeRootView() -> AnyView {
-        AnyView(SettingsView(title: "Settings flow 1"))
+        AnyView(SettingsView(title: "Settings flow 1")
+            .environment(self)
+        )
     }
     
     override func makeView(_ destination: SettingsDestination) -> AnyView {
-        AnyView(SettingsView(title: title(destination)))
+        AnyView(SettingsView(title: title(destination))
+            .environment(self)
+        )
     }
     
     private func title(_ destination: SettingsDestination) -> String {
