@@ -10,7 +10,7 @@ import Combine
 
 struct CoordinatorView<
     Destinating: Destination,
-    CoordinatorType: BaseCoordinator<Destinating>
+    CoordinatorType: Coordinator
 >: View {
     @State private var coordinator: CoordinatorType
     
@@ -21,7 +21,7 @@ struct CoordinatorView<
     var body: some View {
         NavigationStack(path: $coordinator.router.navigationPath) {
             coordinator.makeRootView()
-                .navigationDestination(for: Destinating.self) { destination in
+                .navigationDestination(for: CoordinatorType.Destinating.self) { destination in
                     coordinator.makeView(destination)
                 }
         }

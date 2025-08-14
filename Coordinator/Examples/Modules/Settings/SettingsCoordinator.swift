@@ -7,18 +7,23 @@
 
 import SwiftUI
 
-class SettingsCoordinator: BaseCoordinator<SettingsDestination> {
+@Observable
+final class SettingsCoordinator: Coordinator {
+    var parent: (any ParentCoordinator)?
+    var router = BaseRouter<SettingsDestination>()
     
-    override func makeRootView() -> AnyView {
-        AnyView(SettingsView(title: "Settings flow 1")
-            .environment(self)
-        )
+    init(parent: (any ParentCoordinator)? = nil) {
+        self.parent = parent
     }
     
-    override func makeView(_ destination: SettingsDestination) -> AnyView {
-        AnyView(SettingsView(title: title(destination))
+    func makeRootView() -> some View {
+        SettingsView(title: "Settings flow 1")
             .environment(self)
-        )
+    }
+    
+    func makeView(_ destination: SettingsDestination) -> some View {
+        SettingsView(title: title(destination))
+            .environment(self)
     }
     
     private func title(_ destination: SettingsDestination) -> String {

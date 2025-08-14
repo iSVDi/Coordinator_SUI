@@ -7,23 +7,29 @@
 
 import SwiftUI
 
-class DetailCoordinator: BaseCoordinator<DetailDestination> {
-    override func makeRootView() -> AnyView {
-        AnyView(DetailView()
-            .environment(self)
-        )
+@Observable
+final class DetailCoordinator: Coordinator {
+    var parent: (any ParentCoordinator)?
+    var router = BaseRouter<DetailDestination>()
+    
+    init(parent: (any ParentCoordinator)? = nil) {
+        self.parent = parent
     }
     
-    override func makeView(_ destination: DetailDestination) -> AnyView {
+    func makeRootView() -> some View {
+        DetailView()
+            .environment(self)
+        
+    }
+    
+    func makeView(_ destination: DetailDestination) -> some View {
         switch destination {
         case .customerDetails:
-            AnyView(CustomerDetailView()
+            CustomerDetailView()
                 .environment(self)
-            )
         case .orderInfo:
-            AnyView(OrderDetailView()
+            OrderDetailView()
                 .environment(self)
-            )
         }
     }
     
@@ -34,5 +40,5 @@ class DetailCoordinator: BaseCoordinator<DetailDestination> {
     func showOrderDetails() {
         router.push(.orderInfo)
     }
-        
+    
 }

@@ -8,9 +8,45 @@
 import SwiftUI
 
 @MainActor
-protocol Coordinator {
+protocol Coordinator: ParentCoordinator {
     associatedtype Destinating: Destination
+    associatedtype RootViewType: View
+    associatedtype MakeViewType: View
     
-    @ViewBuilder func makeRootView() -> AnyView
-    @ViewBuilder func makeView(_ destination: Destinating) -> AnyView
+    var parent: (any ParentCoordinator)? { get }
+    var router: BaseRouter<Destinating> { get set }
+    
+    @ViewBuilder func makeRootView() -> RootViewType
+    @ViewBuilder func makeView(_ destination: Destinating) -> MakeViewType
+}
+
+extension Coordinator {
+    func dismissFromParent() {
+        router.dismiss()
+    }
+    
+    // MARK: - Router Interface
+    func push(_ destination: Destinating) {
+        router.push(destination)
+    }
+    
+    func pop() {
+        router.pop()
+    }
+    
+    func popToRoot() {
+        router.popToRoot()
+    }
+    
+    func presentSheet(_ destination: Destinating) {
+        router.presentSheet(destination)
+    }
+    
+    func presentFullScreenCover(_ destination: Destinating) {
+        router.presentFullScreenCover(destination)
+    }
+    
+    func dismiss() {
+        parent?.dismissFromParent()
+    }
 }

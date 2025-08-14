@@ -158,8 +158,8 @@
             filePath = "Coordinator/Examples/Modules/Main/MainCoordinator.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "makeView(_:)"
             landmarkType = "7">
          </BreakpointContent>

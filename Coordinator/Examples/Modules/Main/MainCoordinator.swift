@@ -7,32 +7,35 @@
 
 import SwiftUI
 
-class MainCoordinator: BaseCoordinator<MainDestination> {
+@Observable
+final class MainCoordinator: Coordinator {
+    var parent: (any ParentCoordinator)?
+    var router = BaseRouter<MainDestination>()
     
-    override func makeRootView() -> AnyView {
-        AnyView(HomeView()
-            .environment(self))
+    init(parent: (any ParentCoordinator)? = nil) {
+        self.parent = parent
     }
     
-    override func makeView(_ destination: MainDestination) -> AnyView {
+    func makeRootView() -> some View {
+        HomeView()
+            .environment(self)
+    }
+    
+    func makeView(_ destination: MainDestination) -> some View {
         switch destination {
         case .profile:
-            AnyView(ProfileView()
+            ProfileView()
                 .environment(self)
-            )
         case .settings:
-            AnyView(CoordinatorView(SettingsCoordinator(parent: self)))
+            CoordinatorView<SettingsDestination, SettingsCoordinator>(SettingsCoordinator(parent: self))
         case .detail:
-            AnyView(CoordinatorView(DetailCoordinator(parent: self)))
+            CoordinatorView<DetailDestination, DetailCoordinator>(DetailCoordinator(parent: self))
         case .commonInfo:
-            AnyView(ProfileCommonInfoView()
+            ProfileCommonInfoView()
                 .environment(self)
-            )
         case .country:
-            AnyView(ProfileCountryView()
+            ProfileCountryView()
                 .environment(self)
-            )
-            
         }
     }
     
