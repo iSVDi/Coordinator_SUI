@@ -13,5 +13,4 @@ enum MainDestination: Destination, Hashable {
     case detail
     case commonInfo
     case country
-    
 }

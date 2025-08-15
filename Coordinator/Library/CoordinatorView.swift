@@ -8,10 +8,7 @@
 import SwiftUI
 import Combine
 
-struct CoordinatorView<
-    Destinating: Destination,
-    CoordinatorType: Coordinator
->: View {
+struct CoordinatorView<CoordinatorType: Coordinator>: View {
     @State private var coordinator: CoordinatorType
     
     init(_ coordinatorBuilder: CoordinatorType) {

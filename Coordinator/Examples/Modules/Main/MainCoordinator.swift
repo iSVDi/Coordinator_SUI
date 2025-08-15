@@ -27,9 +27,9 @@ final class MainCoordinator: Coordinator {
             ProfileView()
                 .environment(self)
         case .settings:
-            CoordinatorView<SettingsDestination, SettingsCoordinator>(SettingsCoordinator(parent: self))
+            CoordinatorView(SettingsCoordinator(parent: self))
         case .detail:
-            CoordinatorView<DetailDestination, DetailCoordinator>(DetailCoordinator(parent: self))
+            CoordinatorView(DetailCoordinator(parent: self))
         case .commonInfo:
             ProfileCommonInfoView()
                 .environment(self)
